@@ -1,0 +1,25 @@
+{
+  "name": "foreign-license-appointment-tracker",
+  "version": "1.0.0",
+  "description": "Check for available appointments from the Tokyo Metropolitan Police Department",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node script.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/parkerhutcheson/foreign-license-appointment-tracker.git"
+  },
+  "author": "Parker D. Hutcheson (@parkerhutcheson)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/parkerhutcheson/foreign-license-appointment-tracker/issues"
+  },
+  "homepage": "https://github.com/parkerhutcheson/foreign-license-appointment-tracker#readme",
+  "dependencies": {
+    "openai": "^4.102.0",
+    "puppeteer": "^24.9.0",
+    "zod": "^3.25.20"
+  }
+}

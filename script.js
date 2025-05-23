@@ -158,7 +158,9 @@ async function checkAppointments() {
     const screenshotPath = await captureScreenshot();
     const appointments = await analyzeScreenshot(screenshotPath);
     
-    // deleteFile(screenshotPath);
+    if (appointments.length === 0) {
+      deleteFile(screenshotPath);
+    }
 
     if (appointments.length === 0) {
       console.log("No appointments available");

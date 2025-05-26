@@ -22,7 +22,7 @@ export async function analyzeScreenshot(filePath) {
           content: [
             {
               type: "text",
-              text: `Extract appointment data from this Japanese police appointment screenshot. Return only a JSON array with this exact structure:
+              text: `Extract appointment data from this Japanese police appointment screenshot. Available appointments will have a green circle showing it is available. While booked or unavailable times will show a red circle or a grey line. Return only a JSON array with this exact structure:
 
 [
   {

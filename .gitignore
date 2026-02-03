@@ -1,5 +1,6 @@
 # custom
 screenshots/
+.DS_Store
 
 # Logs
 logs

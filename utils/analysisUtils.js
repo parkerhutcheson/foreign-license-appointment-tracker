@@ -1,4 +1,5 @@
 import fs from "fs";
+import 'dotenv/config';
 import { openai } from "./config.js";
 import { AnalysisSchema } from "./constants.js";
 

@@ -3,8 +3,9 @@
 Automated tool to monitor Tokyo license conversion appointments. Notifies when slots open up within the next 10 days.
 
 ## Features
+- 📅 Monitors Tokyo foreign license appointment system with traditional web scraping or AI
 - 🕵️ Automated screenshot capture of appointment system
-- 🤖 AI analysis using OpenAI gpt-4.1-mini realesed April 22, 2025
+- 🤖 AI analysis using OpenAI gpt-4.1-mini released April 22, 2025
 - 🔔 Audio & console alerts when appointments found
 - ♻️ Configurable check interval (default: 30 seconds)
 - 🗑️ Automatic cleanup of screenshot files
@@ -14,7 +15,7 @@ Automated tool to monitor Tokyo license conversion appointments. Notifies when s
 ### Prerequisites
 - Node.js v18+
 - npm
-- OpenAI API key
+- OpenAI API key (if you want to use AI features)
 
 ```bash
 git clone https://github.com/parkerhutcheson/foreign-license-appointment-tracker.git
@@ -30,6 +31,7 @@ OPENAI_API_KEY=your_key_here
 
 2. Customize constants in `utils/constants.js`:
 ```javascript
+export const USE_CHATGPT = true; // Set to false to disable AI analysis
 export const CHECK_INTERVAL = 30000; // 30 seconds
 export const SCREENSHOTS_DIR = './screenshots'; // Storage path
 ```
@@ -42,7 +44,13 @@ npm start
 ```
 
 ## How It Works
-1. Takes screenshot of appointment portal every x seconds/minutes
+### Traditional Scraping
+1. Looks for available dates on the appointment site through HTML parsing
+2. Triggers alarm if any slot within 10 days is found
+3. Logs results 
+
+### AI-Powered Analysis
+1. Takes screenshots of the appointment page at intervals
 2. Uses AI to analyze for available dates
 3. Triggers alarm if any slot within 10 days is found
 4. Logs results and cleans up screenshot files

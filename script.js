@@ -1,7 +1,8 @@
 import { captureScreenshot } from "./utils/screenshotUtils.js";
 import { analyzeScreenshot } from "./utils/analysisUtils.js";
+import { scrapeForAppointments } from "./utils/scrapeSite.js";
 import { deleteFile } from "./utils/fileUtils.js";
-import { CHECK_INTERVAL, SCREENSHOTS_DIR } from "./utils/constants.js";
+import { CHECK_INTERVAL, SCREENSHOTS_DIR, USE_CHATGPT } from "./utils/constants.js";
 import playSound from 'play-sound';
 
 const player = playSound();
@@ -11,11 +12,17 @@ async function checkAppointments() {
     const timestamp = new Date().toLocaleString();
     console.log(`[${timestamp}] Checking appointments...`);
     
-    const screenshotPath = await captureScreenshot();
-    const appointments = await analyzeScreenshot(screenshotPath);
+    let appointments = [];
+    if (USE_CHATGPT) {
+      console.log("Using ChatGPT analysis for appointments.");
+      const screenshotPath = await captureScreenshot();
+      appointments = await analyzeScreenshot(screenshotPath);
+    } else {
+      appointments = await scrapeForAppointments();
+    }
     
     if (appointments.length === 0) {
-      deleteFile(screenshotPath);
+      if (USE_CHATGPT) deleteFile(screenshotPath);
       console.log("No appointments available");
     } else {
       // Play sound only when appointments are found

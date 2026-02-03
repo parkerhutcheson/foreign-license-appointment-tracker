@@ -19,6 +19,8 @@
   },
   "homepage": "https://github.com/parkerhutcheson/foreign-license-appointment-tracker#readme",
   "dependencies": {
+    "dotenv": "^17.2.3",
+    "jsdom": "^28.0.0",
     "openai": "^4.102.0",
     "play-sound": "^1.1.6",
     "puppeteer": "^24.9.0",
